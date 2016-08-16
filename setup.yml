@@ -1,0 +1,25 @@
+---
+- hosts: localhost
+  connection: local
+
+  #vars_prompt:
+  #  - name: config_file
+  #    prompt: "Which vars should I load?"
+  #    private: no
+
+  #vars_files:
+  #  - vars/{{ config_files }}.yml
+
+  tasks:
+    - name: Get size of long to determine architecture
+      command: getconf LONG_BIT
+      register: long_bit
+      changed_when: false
+
+    - name: Get list of installed packages
+      command: pacman -Qq
+      register: installed_packages
+      changed_when: false
+
+    - include: tasks/google-chrome.yml
+
