@@ -1,0 +1,14 @@
+---
+- name: Configure Xorg for three monitor setup
+  become: yes
+  copy:
+        src=files/nvidia.conf
+        dest=/etc/X11/mhwd.d/nvidia.conf
+        owner=root
+        group=root
+        mode="u=rw,g=r,o=r"
+        backup=yes
+
+- name: Restart Xorg
+  become: yes
+  shell: mhwd-gpu --setgl nvidia --setxorg /etc/X11/mhwd.d/nvidia.conf

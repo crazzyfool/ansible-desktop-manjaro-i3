@@ -4,12 +4,3 @@
   become: yes
   become_user: andy
 
-- name: AceStream Player
-  yaourt: name="acestream-player" state="present"
-  become: yes
-  become_user: andy
-
-- name: AceStream Mozilla Plugin
-  yaourt: name="acestream-mozilla-plugin" state="present"
-  become: yes
-  become_user: andy
