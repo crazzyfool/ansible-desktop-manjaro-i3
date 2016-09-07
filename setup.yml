@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  become: yes
+  become: no
   connection: local
 
   #vars_prompt:
@@ -24,4 +24,4 @@
 
     - include: tasks/google-chrome.yml
 
-    - include: tasks/basic-configuration.yml
+      #- include: tasks/basic-configuration.yml
