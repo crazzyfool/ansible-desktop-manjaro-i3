@@ -32,7 +32,7 @@
   lineinfile:
     dest: "~/.i3/config"
     regexp: "tray_output primary"
-    line: "tray_output primary"
+    line: "     tray_output primary"
     state: present
   notify: reload i3
 
