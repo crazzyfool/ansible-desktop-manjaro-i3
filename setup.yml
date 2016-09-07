@@ -28,7 +28,8 @@
 
     - include: tasks/basic-configuration.yml
 
+    - include: tasks/nvpy.yml
+
   handlers:
     - name: reload i3
-      #shell: i3-msg reload
       shell: i3-msg reload
