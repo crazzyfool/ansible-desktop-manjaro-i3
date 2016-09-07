@@ -34,7 +34,7 @@
     regexp: "tray_output primary"
     line: "     tray_output primary"
     state: present
-  notify: reload i3
+  #notify: reload i3
 
   #handlers:
   #  - name: reload i3

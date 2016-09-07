@@ -31,4 +31,4 @@
   handlers:
     - name: reload i3
       #shell: i3-msg reload
-      shell: i3-msg restart
+      shell: i3-msg reload
