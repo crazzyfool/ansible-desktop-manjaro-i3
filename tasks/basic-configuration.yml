@@ -5,7 +5,8 @@
   #hosts: localhost
   
   #- tasks:
-- name: Copy XOrg configuration file (nvidia.conf) 
+- name: Copy XOrg configuration file (nvidia.conf)
+  become: yes
   copy:
     src=files/nvidia.conf
     dest=/etc/X11/mhwd.d/nvidia.conf
@@ -15,7 +16,7 @@
     backup=yes
 
 - name: Register XOrg configuration file with NVidia
-  #become: yes
+  become: yes
   shell: mhwd-gpu --setgl nvidia --setxorg /etc/X11/mhwd.d/nvidia.conf
 
 - name: Create screenLayout Directory

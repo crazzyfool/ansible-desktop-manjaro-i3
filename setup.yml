@@ -22,6 +22,8 @@
       register: installed_packages
       changed_when: false
 
-    - include: tasks/google-chrome.yml
+    - include: tasks/update-manjaro.yml
+    
+      #- include: tasks/google-chrome.yml
 
-      #- include: tasks/basic-configuration.yml
+    - include: tasks/basic-configuration.yml
