@@ -1,5 +1,5 @@
 ---
-- name: Copy XOrg configuration file (nvidia.conf)
+- name: Copy xorg configuration file (nvidia.conf)
   become: yes
   copy:
     src=files/nvidia.conf
@@ -29,20 +29,29 @@
     line: "     tray_output primary"
     state: present
 
-- name: Configure Conky X coordinates
+- name: Configure Conky - Help Position
   become: yes
   lineinfile:
     dest: "/usr/share/conky/conky1.10_shortcuts_maia"
     regexp: "gap_x"
     line: "        gap_x = 2280,"
     state: present
-
-
-- name: Configure Conky Y coordinates
-  become: yes
   lineinfile:
     dest: "/usr/share/conky/conky1.10_shortcuts_maia"
     regexp: "gap_y"
     line: "        gap_y = 55,"
+    state: present
+
+- name: Configure Conky - System Information Position
+  become: yes
+  lineinfile:
+    dest: "/usr/share/conky/conky_maia"
+    regexp: "gap_x"
+    line: "        gap_x = 30,"
+    state: present
+  lineinfile:
+    dest: "/usr/share/conky/conky_maia"
+    regexp: "gap_y"
+    line: "        gap_y = 130,"
     state: present
 
