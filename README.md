@@ -15,5 +15,5 @@ Manjaro is based on Arch Linux and comes pre-installed with the yaort package ma
 
   git clone .....
   cd ....
-  ansible-playbook setup.yml -i localhost
+  ansible-playbook setup.yml
 
