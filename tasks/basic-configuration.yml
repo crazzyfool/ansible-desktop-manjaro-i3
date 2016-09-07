@@ -28,3 +28,15 @@
 - name: Execute XRandR script to make changes without requiring a reboot
   script: files/three-monitor-config.sh
 
+- name: Change i3 tray output to primary monitor
+  lineinfile:
+    dest: "~/.i3/config"
+    regexp: "tray_output primary"
+    line: "tray_output primary"
+    state: present
+  notify: reload i3
+
+  #handlers:
+  #  - name: reload i3
+  #    shell: i3-msg reload
+  #    become: yes

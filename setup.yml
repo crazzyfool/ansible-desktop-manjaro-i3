@@ -27,3 +27,7 @@
       #- include: tasks/google-chrome.yml
 
     - include: tasks/basic-configuration.yml
+
+  handlers:
+    - name: reload i3
+      shell: i3-msg reload
