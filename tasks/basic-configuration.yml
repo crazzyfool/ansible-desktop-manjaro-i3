@@ -34,7 +34,7 @@
   lineinfile:
     dest: "/usr/share/conky/conky1.10_shortcuts_maia"
     regexp: "gap_x"
-    line: "        gap_x = 2280"
+    line: "        gap_x = 2280,"
     state: present
 
 
@@ -43,6 +43,6 @@
   lineinfile:
     dest: "/usr/share/conky/conky1.10_shortcuts_maia"
     regexp: "gap_y"
-    line: "        gap_y = 55"
+    line: "        gap_y = 55,"
     state: present
 
