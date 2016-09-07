@@ -1,0 +1,6 @@
+---
+- name: Nvpy
+  yaourt: name="nvpy-git" state="present"
+  become: yes
+  become_user: andy
+
