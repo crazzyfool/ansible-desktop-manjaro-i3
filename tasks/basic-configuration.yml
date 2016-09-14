@@ -8,19 +8,21 @@
     group=root
     mode="u=rw,g=r,o=r"
     backup=yes
+  notify: set xorg
 
-- name: Register XOrg configuration file with NVidia
-  become: yes
-  shell: mhwd-gpu --setgl nvidia --setxorg /etc/X11/mhwd.d/nvidia.conf
+  #- name: Register XOrg configuration file with NVidia
+  #become: yes
+  #shell: mhwd-gpu --setgl nvidia --setxorg /etc/X11/mhwd.d/nvidia.conf
 
 - name: Create screenLayout Directory
   file: path=~/.screenLayout state=directory owner=andy group=users mode=755
 
 - name: Copy xrandr configuration file
-  copy: src=files/three-monitor-config.sh dest=~/.screenLayout/three-monitor-config.sh owner=andy group=users mode=755
+  copy: src=files/3-monitor-setup.sh dest=~/.screenLayout/3-monitor-setup.sh owner=andy group=users mode=755
+  notify: monitor setup
 
-- name: Execute XRandR script to make changes without requiring a reboot
-  script: files/three-monitor-config.sh
+  #- name: Execute XRandR script to make changes without requiring a reboot
+  #script: files/3-monitor-setup.sh
 
 - name: Change i3 tray output to primary monitor
   lineinfile:
@@ -29,29 +31,69 @@
     line: "     tray_output primary"
     state: present
 
-- name: Configure Conky - Help Position
+- name: Configure Conky - Help menu position
   become: yes
   lineinfile:
     dest: "/usr/share/conky/conky1.10_shortcuts_maia"
-    regexp: "gap_x"
-    line: "        gap_x = 2280,"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
     state: present
-  lineinfile:
-    dest: "/usr/share/conky/conky1.10_shortcuts_maia"
-    regexp: "gap_y"
-    line: "        gap_y = 55,"
-    state: present
+  with_items:
+    - regexp: "gap_x"
+      line: "        gap_x = 2280,"
+    - regexp: "gap_y"
+      line: "        gap_y = 50,"
+  
+  #  lineinfile:
+  #  dest: "/usr/share/conky/conky1.10_shortcuts_maia"
+  #  regexp: "gap_y"
+  #  line: "        gap_y = 50,"
+  #  state: present
 
-- name: Configure Conky - System Information Position
+- name: Configure Conky - System performance position
   become: yes
   lineinfile:
     dest: "/usr/share/conky/conky_maia"
-    regexp: "gap_x"
-    line: "        gap_x = 30,"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }} "
     state: present
-  lineinfile:
-    dest: "/usr/share/conky/conky_maia"
-    regexp: "gap_y"
-    line: "        gap_y = 130,"
-    state: present
+  with_items:
+    - regexp: "gap_x"
+      line: "        gap_x = 30,"
+    - regexp: "gap_y"
+      line: "        gap_y = 130,"
+
+
+
+  #lineinfile:
+  #  dest: "/usr/share/conky/conky_maia"
+  #  regexp: "gap_y"
+  #  line: "        gap_y = 130,"
+  #  state: present
+
+
+
+  #- name: Configure Conky - Help Position (Y coordinate)
+  #  become: yes
+  #  lineinfile:
+  #    dest: "/usr/share/conky/conky1.10_shortcuts_maia"
+  #    regexp: "gap_y"
+  #    line: "        gap_y = 55,"
+  #    state: present
+
+  #- name: Configure Conky - System Information Position (X coordinate)
+  #become: yes
+  #lineinfile:
+  #  dest: "/usr/share/conky/conky_maia"
+  #  regexp: "gap_x"
+  #  line: "        gap_x = 30,"
+  #  state: present
+
+  #- name: Configure Conky - System Information Position (Y coordinate)
+  #become: yes
+  #lineinfile:
+  #  dest: "/usr/share/conky/conky_maia"
+  #  regexp: "gap_y"
+  #  line: "        gap_y = 130,"
+  #  state: present
 

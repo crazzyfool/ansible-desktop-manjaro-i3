@@ -1,0 +1,17 @@
+---
+- name: Check to see if ALSA is auto-muted
+  become: no
+  shell: amixer -c 0 sget "Auto-Mute Mode" | grep Item0
+  register: mutestatus
+  changed_when: "'Item0' not in mutestatus.stdout"
+
+- name: Disable auto-mute
+  become: no
+  shell: amixer -c 0 sset "Auto-Mute Mode" Disabled
+  when: "'Enabled' in mutestatus.stdout"
+  notify: save alsamixer
+
+#- name: Save ALSA configuration
+#become: yes
+#shell: alsactl store
+

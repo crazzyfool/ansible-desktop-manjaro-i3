@@ -2,4 +2,7 @@
 - name: Update Manjaro
   #become: yes
   shell: yaourt -Syyu --noconfirm
+  register: yaourtoutput
+  failed_when: "'unresolvable package conflicts detected' in yaourtoutput.stderr"
+  ignore_errors: true
 

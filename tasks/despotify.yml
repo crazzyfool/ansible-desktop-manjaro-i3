@@ -1,0 +1,6 @@
+---
+- name: Despotify
+  yaourt: name="despotify-svn" state="present"
+  become: yes
+  become_user: andy
+
