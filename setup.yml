@@ -45,7 +45,4 @@
     - name: monitor setup
       script: files/3-monitor-setup.sh
 
-
-
-
     - debug: msg="set xorg has been run!"
