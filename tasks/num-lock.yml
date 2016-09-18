@@ -1,16 +1,26 @@
 ---
-- name: Add 'numlockx &' to .xinitrc and execute the command
-  become: no
-  lineinfile:
-    dest: '~/.xinitrc'
-    insertbefore: '^if '
-    line: "numlockx &"
-    state: present
-  notify: enable numlockx
-- name: Insert blank line
-  lineinfile:
-    dest: '~/.xinitrc'
-    insertafter: '^numlockx '
-    line: " "
-    state: present
+#- name: Add 'numlockx &' to .xinitrc and execute the command
+#  become: no
+#  lineinfile:
+#    dest: '~/.xinitrc'
+#    insertbefore: '^if '
+#    line: "numlockx &"
+#    state: present
+#  notify: enable numlockx
+#- name: Insert blank line
+#  lineinfile:
+#    dest: '~/.xinitrc'
+#    insertafter: '^numlockx '
+#    line: " "
+#    state: present
 
+- name: Copy xorg configuration file (nvidia.conf)
+  become: yes
+  copy:
+    src=files/60-numlock.sh
+    dest=/etc/X11/xinit/xinitrc.d/60-numlock.sh
+    owner=root
+    group=root
+    mode="u=rwx,g=rx,o=rx"
+    backup=yes
+  notify: enable numlockx
