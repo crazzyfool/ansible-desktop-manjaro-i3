@@ -31,6 +31,7 @@
     # Basic configuration:
     - include: tasks/basic-configuration.yml
     - include: tasks/alsamixer-automute.yml
+    # Does not seem to currently work.  I think its a bug with the package.  Use numlockx
     - include: tasks/num-lock.yml
 
     # Install software:
@@ -55,3 +56,6 @@
       script: files/3-monitor-setup.sh
 
     - debug: msg="set xorg has been run!"
+
+    - name: enable numlockx
+      shell: numlockx

@@ -1,8 +1,16 @@
 ---
-- name: Install Num-Lock on TTY
-  yaourt: name="systemd-numlockontty" state="present"
-  become: yes
-  become_user: andy
+- name: Add 'numlockx &' to .xinitrc and execute the command
+  become: no
+  lineinfile:
+    dest: '~/.xinitrc'
+    insertbefore: '^if '
+    line: "numlockx &"
+    state: present
+  notify: enable numlockx
+- name: Insert blank line
+  lineinfile:
+    dest: '~/.xinitrc'
+    insertafter: '^numlockx '
+    line: " "
+    state: present
 
-- name: Start and Enable Num-Lock on Boot
-  service: name=numLockOnTty state=started enabled=yes
