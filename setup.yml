@@ -12,21 +12,30 @@
   #  - vars/{{ config_files }}.yml
 
   tasks:
-    - name: Get size of long to determine architecture
-      command: getconf LONG_BIT
-      register: long_bit
-      changed_when: false
+    # Removing as not currently in use:
+    #- name: Get size of long to determine architecture
+    #  command: getconf LONG_BIT
+    #  register: long_bit
+    #  changed_when: false
 
-    - name: Get list of installed packages
-      command: pacman -Qq
-      register: installed_packages
-      changed_when: false
+    # Removing as not currently used:
+    #- name: Get list of installed packages
+    #  command: pacman -Qq
+    #  register: installed_packages
+    #  changed_when: false
 
-    - include: tasks/update-manjaro.yml
-    - include: tasks/google-chrome.yml
+
+    # Removing as updates should probably be done manually
+    #- include: tasks/update-manjaro.yml
+
+    # Basic configuration:
     - include: tasks/basic-configuration.yml
-    - include: tasks/nvpy.yml
     - include: tasks/alsamixer-automute.yml
+    - include: tasks/num-lock.yml
+
+    # Install software:
+    - include: tasks/google-chrome.yml
+    - include: tasks/nvpy.yml
     # Despotify seems to be usless!!
     #- include: tasks/despotify.yml
 

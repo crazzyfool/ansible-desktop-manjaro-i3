@@ -1,6 +1,6 @@
 ---
 - name: Copy xorg configuration file (nvidia.conf)
-  become: yes
+  #become: yes
   copy:
     src=files/nvidia.conf
     dest=/etc/X11/mhwd.d/nvidia.conf
@@ -8,6 +8,7 @@
     group=root
     mode="u=rw,g=r,o=r"
     backup=yes
+  become: yes
   notify: set xorg
 
   #- name: Register XOrg configuration file with NVidia
@@ -64,36 +65,4 @@
       line: "        gap_y = 130,"
 
 
-
-  #lineinfile:
-  #  dest: "/usr/share/conky/conky_maia"
-  #  regexp: "gap_y"
-  #  line: "        gap_y = 130,"
-  #  state: present
-
-
-
-  #- name: Configure Conky - Help Position (Y coordinate)
-  #  become: yes
-  #  lineinfile:
-  #    dest: "/usr/share/conky/conky1.10_shortcuts_maia"
-  #    regexp: "gap_y"
-  #    line: "        gap_y = 55,"
-  #    state: present
-
-  #- name: Configure Conky - System Information Position (X coordinate)
-  #become: yes
-  #lineinfile:
-  #  dest: "/usr/share/conky/conky_maia"
-  #  regexp: "gap_x"
-  #  line: "        gap_x = 30,"
-  #  state: present
-
-  #- name: Configure Conky - System Information Position (Y coordinate)
-  #become: yes
-  #lineinfile:
-  #  dest: "/usr/share/conky/conky_maia"
-  #  regexp: "gap_y"
-  #  line: "        gap_y = 130,"
-  #  state: present
 
