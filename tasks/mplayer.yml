@@ -1,4 +1,4 @@
 ---
-- name: Oracle Java Development Kit
+- name: Install MPlayer
   pacman: name="mplayer" state="present"
   become: yes
