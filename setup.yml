@@ -50,7 +50,7 @@
 
     # Sound & Video
     # -------------
-    - include: tasks/mplayer.yml
+    #- include: tasks/mplayer.yml
 
     # Office
     # ------
