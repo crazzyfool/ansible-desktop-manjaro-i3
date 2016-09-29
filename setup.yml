@@ -11,15 +11,9 @@
 
   vars_files:
     - vars/home-pc.yml
-      #- vars/{{ config_files }}.yml
-      #- vars/home-pc.yml
+    #- vars/{{ config_files }}.yml
 
   tasks:
-    - name: Get size of long to determine architecture
-      command: getconf LONG_BIT
-      register: long_bit
-      changed_when: false
-
     #######################
     # Basic configuration #
     #######################
@@ -30,21 +24,14 @@
     - include: tasks/fonts-terminal.yml
     - include: tasks/fonts-desktop.yml
 
-    #- include: tasks/vim.yml user={{ user_item }}
-    - include: tasks/vim.yml user=andy
-    - include: tasks/vim.yml user=root
-    #  with_items: '{{ users_inc_super }}'
-    #  control_loop:
-    #    loop_var: '{{ user_item }}'
-      
+    - include: tasks/vim.yml user={{ user_item }}
+      with_items: '{{ users_inc_super }}'
+      loop_control:
+        loop_var: user_item
 
-    #- include: tasks/basic-configuration.yml
-    #- include: tasks/alsamixer-automute.yml
-    #- include: tasks/num-lock.yml
-
-    #######################
-    #       SOFTWARE      #
-    #######################
+    ########################
+    #       SOFTWARE       #
+    ########################
 
     # Internet
     # --------
@@ -55,14 +42,6 @@
     # -------------
 
     - include: tasks/nvpy.yml
-
-
-
-    # Configure VIM with Ultimate vimrc
-    #- include: tasks/vim.yml user={{ user_item }}
-    #  with_items: '{{ users_inc_super }}'
-    #  loop_control:
-    #    loop_var: user_item
 
   handlers:
     - name: reload i3
