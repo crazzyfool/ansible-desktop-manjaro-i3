@@ -1,0 +1,4 @@
+---
+- name: Oracle Java Development Kit
+  pacman: name="mplayer" state="present"
+  become: yes

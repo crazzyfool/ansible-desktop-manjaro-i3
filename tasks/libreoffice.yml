@@ -1,0 +1,6 @@
+---
+- name: Install LibreOffice
+  pacman: name={{ item }} state="present"
+  with_items:
+    - libreoffice-fresh-en-GB
+  become: yes

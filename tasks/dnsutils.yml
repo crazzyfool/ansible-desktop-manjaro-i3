@@ -1,0 +1,4 @@
+---
+- name: Install DNS Utilities
+  pacman: name="dnsutils" state="present"
+  become: yes

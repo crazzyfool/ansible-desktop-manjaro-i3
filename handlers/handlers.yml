@@ -1,0 +1,21 @@
+---
+- name: reload i3
+  shell: i3-msg reload
+
+- name: save alsamixer
+  become: yes
+  shell: alsactl store
+
+- name: set xorg
+  shell: mhwd-gpu --setgl nvidia --setxorg /etc/X11/mhwd.d/nvidia.conf
+  become: yes
+
+- name: monitor setup
+  script: files/3-monitor-setup.sh
+
+- debug: msg="set xorg has been run!"
+
+- name: enable numlockx
+  shell: numlockx
+  become: no
+

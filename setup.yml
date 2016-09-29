@@ -13,6 +13,9 @@
     - vars/home-pc.yml
     #- vars/{{ config_files }}.yml
 
+  handlers:
+    - include: handlers/handlers.yml
+
   tasks:
     #######################
     # Basic configuration #
@@ -23,6 +26,9 @@
     - include: tasks/enable-numlock.yml
     - include: tasks/fonts-terminal.yml
     - include: tasks/fonts-desktop.yml
+    - include: tasks/oracle-java.yml
+    - include: tasks/dnsutils.yml
+    - include: tasks/nmap.yml
 
     - include: tasks/vim.yml user={{ user_item }}
       with_items: '{{ users_inc_super }}'
@@ -35,31 +41,21 @@
 
     # Internet
     # --------
-
     - include: tasks/google-chrome.yml
+    - include: tasks/firefox.yml
 
     # Collaboration
     # -------------
-
     - include: tasks/nvpy.yml
 
-  handlers:
-    - name: reload i3
-      shell: i3-msg reload
+    # Sound & Video
+    # -------------
+    - include: tasks/mplayer.yml
 
-    - name: save alsamixer
-      become: yes
-      shell: alsactl store
+    # Office
+    # ------
+    - include: tasks/libreoffice.yml
 
-    - name: set xorg
-      shell: mhwd-gpu --setgl nvidia --setxorg /etc/X11/mhwd.d/nvidia.conf
-      become: yes
-
-    - name: monitor setup
-      script: files/3-monitor-setup.sh
-
-    - debug: msg="set xorg has been run!"
-
-    - name: enable numlockx
-      shell: numlockx
-      become: no
+    # Programming
+    # -----------
+    #- include: tasks/oracle-java.yml
