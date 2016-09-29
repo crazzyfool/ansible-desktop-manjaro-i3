@@ -2,43 +2,32 @@
 - hosts: localhost
   become: no
   connection: local
+  gather_facts: no
 
   #vars_prompt:
   #  - name: config_file
   #    prompt: "Which vars should I load?"
   #    private: no
 
-  #vars_files:
-  #  - vars/{{ config_files }}.yml
+  vars_files:
+      #- vars/{{ config_files }}.yml
+    - vars/home-pc.yml
 
   tasks:
-    # Removing as not currently in use:
-    #- name: Get size of long to determine architecture
-    #  command: getconf LONG_BIT
-    #  register: long_bit
-    #  changed_when: false
-
-    # Removing as not currently used:
-    #- name: Get list of installed packages
-    #  command: pacman -Qq
-    #  register: installed_packages
-    #  changed_when: false
-
-
-    # Removing as updates should probably be done manually
-    #- include: tasks/update-manjaro.yml
-
     # Basic configuration:
     - include: tasks/basic-configuration.yml
     - include: tasks/alsamixer-automute.yml
-    # Does not seem to currently work.  I think its a bug with the package.  Use numlockx
     - include: tasks/num-lock.yml
 
     # Install software:
     - include: tasks/google-chrome.yml
     - include: tasks/nvpy.yml
-    # Despotify seems to be usless!!
-    #- include: tasks/despotify.yml
+
+      # Configure VIM with Ultimate vimrc
+    - include: tasks/vim.yml user={{ user_item }}
+      with_items: '{{ users_inc_super }}'
+      loop_control:
+        loop_var: user_item
 
   handlers:
     - name: reload i3

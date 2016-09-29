@@ -1,0 +1,15 @@
+---
+
+users:
+  - andy
+
+users_inc_super:
+  - root
+  - andy
+
+model: home-pc
+
+wifi: true
+laptop: false
+
+
