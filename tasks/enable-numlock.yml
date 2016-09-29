@@ -1,0 +1,11 @@
+---
+- name: Copy xorg configuration file (nvidia.conf)
+  become: yes
+  copy:
+    src=files/60-numlock.sh
+    dest=/etc/X11/xinit/xinitrc.d/60-numlock.sh
+    owner=root
+    group=root
+    mode="u=rwx,g=rx,o=rx"
+    backup=yes
+  notify: enable numlockx

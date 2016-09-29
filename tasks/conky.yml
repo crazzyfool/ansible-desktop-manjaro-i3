@@ -1,0 +1,27 @@
+---
+- name: Configure Conky - Help menu position
+  become: yes
+  lineinfile:
+    dest: "/usr/share/conky/conky1.10_shortcuts_maia"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+  with_items:
+    - regexp: "gap_x"
+      line: "        gap_x = 2280,"
+    - regexp: "gap_y"
+      line: "        gap_y = 50,"
+  
+- name: Configure Conky - System performance position
+  become: yes
+  lineinfile:
+    dest: "/usr/share/conky/conky_maia"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }} "
+    state: present
+  with_items:
+    - regexp: "gap_x"
+      line: "        gap_x = 30,"
+    - regexp: "gap_y"
+      line: "        gap_y = 130,"
+

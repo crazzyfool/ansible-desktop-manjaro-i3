@@ -1,0 +1,7 @@
+---
+- name: Set up terminal fonts
+  yaourt: name={{ item }} state=present
+  with_items:
+    - terminus-font
+    - ttf-inconsolata
+    - ttf-symbola

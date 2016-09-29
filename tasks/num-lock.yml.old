@@ -1,8 +1,0 @@
----
-- name: Install Num-Lock on TTY
-  yaourt: name="systemd-numlockontty" state="present"
-  become: yes
-  become_user: andy
-
-- name: Start and Enable Num-Lock on Boot
-  service: name=numLockOnTty state=started enabled=yes

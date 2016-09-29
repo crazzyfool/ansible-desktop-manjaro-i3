@@ -1,0 +1,25 @@
+---
+- name: Copy xorg configuration file (nvidia.conf)
+  copy:
+    src=files/nvidia.conf
+    dest=/etc/X11/mhwd.d/nvidia.conf
+    owner=root
+    group=root
+    mode="u=rw,g=r,o=r"
+    backup=yes
+  become: yes
+  notify: set xorg
+
+- name: Create screenLayout Directory
+  file: path=~/.screenLayout state=directory owner=andy group=users mode=755
+
+- name: Copy xrandr configuration file
+  copy: src=files/3-monitor-setup.sh dest=~/.screenLayout/3-monitor-setup.sh owner=andy group=users mode=755
+  notify: monitor setup
+
+- name: Change i3 tray output to primary monitor
+  lineinfile:
+    dest: "~/.i3/config"
+    regexp: "tray_output primary"
+    line: "     tray_output primary"
+    state: present

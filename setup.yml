@@ -10,24 +10,59 @@
   #    private: no
 
   vars_files:
-      #- vars/{{ config_files }}.yml
     - vars/home-pc.yml
+      #- vars/{{ config_files }}.yml
+      #- vars/home-pc.yml
 
   tasks:
-    # Basic configuration:
-    - include: tasks/basic-configuration.yml
-    - include: tasks/alsamixer-automute.yml
-    - include: tasks/num-lock.yml
+    - name: Get size of long to determine architecture
+      command: getconf LONG_BIT
+      register: long_bit
+      changed_when: false
 
-    # Install software:
+    #######################
+    # Basic configuration #
+    #######################
+    - include: tasks/xorg.yml
+    - include: tasks/conky.yml
+    - include: tasks/disable-automute.yml
+    - include: tasks/enable-numlock.yml
+    - include: tasks/fonts-terminal.yml
+    - include: tasks/fonts-desktop.yml
+
+    #- include: tasks/vim.yml user={{ user_item }}
+    - include: tasks/vim.yml user=andy
+    - include: tasks/vim.yml user=root
+    #  with_items: '{{ users_inc_super }}'
+    #  control_loop:
+    #    loop_var: '{{ user_item }}'
+      
+
+    #- include: tasks/basic-configuration.yml
+    #- include: tasks/alsamixer-automute.yml
+    #- include: tasks/num-lock.yml
+
+    #######################
+    #       SOFTWARE      #
+    #######################
+
+    # Internet
+    # --------
+
     - include: tasks/google-chrome.yml
+
+    # Collaboration
+    # -------------
+
     - include: tasks/nvpy.yml
 
-      # Configure VIM with Ultimate vimrc
-    - include: tasks/vim.yml user={{ user_item }}
-      with_items: '{{ users_inc_super }}'
-      loop_control:
-        loop_var: user_item
+
+
+    # Configure VIM with Ultimate vimrc
+    #- include: tasks/vim.yml user={{ user_item }}
+    #  with_items: '{{ users_inc_super }}'
+    #  loop_control:
+    #    loop_var: user_item
 
   handlers:
     - name: reload i3

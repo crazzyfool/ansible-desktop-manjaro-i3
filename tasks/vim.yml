@@ -1,13 +1,13 @@
 ---
-- name: Install recommended Adobe fonts
-  yaourt: name={{ item }} state="present"
-  with_items:
-    - adobe-source-code-pro-fonts
-    - adobe-source-sans-pro-fonts
-  become: yes
-  become_user: andy
+#- name: Install recommended Adobe fonts
+#  yaourt: name={{ item }} state="present"
+#  with_items:
+#    - adobe-source-code-pro-fonts
+#    - adobe-source-sans-pro-fonts
+#  become: yes
+#  become_user: andy
 
-- name: Clone ultimate vimrc repo for regular user
+- name: Clone ultimate vimrc repo for {{ user }}
   become: yes
   become_user: "{{ user }}"
   git:

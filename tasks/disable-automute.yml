@@ -10,8 +10,3 @@
   shell: amixer -c 0 sset "Auto-Mute Mode" Disabled
   when: "'Enabled' in mutestatus.stdout"
   notify: save alsamixer
-
-#- name: Save ALSA configuration
-#become: yes
-#shell: alsactl store
-
