@@ -1,0 +1,10 @@
+---
+# https://wiki.archlinux.org/index.php/spotify
+- name: Spotify
+  yaourt: name={{ item }} state="present"
+  with_items:
+    - ffmpeg0.10
+    - spotify
+  become: yes
+  become_user: "{{ primary_non_root_user }}"
+

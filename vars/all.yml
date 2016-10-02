@@ -1,0 +1,6 @@
+---
+primary_non_root_user: andy
+
+users_inc_super:
+  - andy
+  - root

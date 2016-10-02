@@ -1,0 +1,6 @@
+---
+- name: Clementine
+  yaourt: name="clementine" state="present"
+  become: yes
+  become_user: "{{ primary_non_root_user }}"
+
