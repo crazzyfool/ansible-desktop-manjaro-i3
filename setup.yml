@@ -50,7 +50,10 @@
 
     # Sound & Video
     # -------------
-    #- include: tasks/mplayer.yml
+    - include: tasks/mplayer.yml
+    - include: tasks/clementine.yml
+    - include: tasks/cmus.yml
+    - include: tasks/spotify.yml
 
     # Office
     # ------
