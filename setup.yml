@@ -10,6 +10,7 @@
   #    private: no
 
   vars_files:
+    - vars/all.yml
     - vars/home-pc.yml
     #- vars/{{ config_files }}.yml
 
@@ -17,6 +18,9 @@
     - include: handlers/handlers.yml
 
   tasks:
+    # Debug checks
+    - debug: msg="Variable 'primary_non_root_user' is set to {{ primary_non_root_user }}"
+
     #######################
     # Basic configuration #
     #######################

@@ -11,10 +11,14 @@
   notify: set xorg
 
 - name: Create screenLayout Directory
-  file: path=~/.screenLayout state=directory owner=andy group=users mode=755
+  file: path=~/.screenLayout state=directory owner="{{ primary_non_root_user }}" group=users mode=755
 
 - name: Copy xrandr configuration file
-  copy: src=files/3-monitor-setup.sh dest=~/.screenLayout/3-monitor-setup.sh owner=andy group=users mode=755
+  copy: 
+    src=files/3-monitor-setup.sh 
+    dest=~/.screenLayout/3-monitor-setup.sh 
+    owner="{{ primary_non_root_user }}" 
+    group=users mode=755
   notify: monitor setup
 
 - name: Change i3 tray output to primary monitor

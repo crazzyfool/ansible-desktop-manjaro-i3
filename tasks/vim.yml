@@ -1,11 +1,4 @@
 ---
-#- name: Install recommended Adobe fonts
-#  yaourt: name={{ item }} state="present"
-#  with_items:
-#    - adobe-source-code-pro-fonts
-#    - adobe-source-sans-pro-fonts
-#  become: yes
-#  become_user: andy
 
 - name: Clone ultimate vimrc repo for {{ user }}
   become: yes
@@ -13,18 +6,9 @@
   git:
     repo: https://github.com/amix/vimrc.git
     dest: ~{{ user }}/.vim_runtime
-  
-    #- name: Clone ultimate vimrc repo for root user
-    #git:
-    # repo: https://github.com/amix/vimrc.git
-    # dest: ~/.vim_runtime
-    #become: yes
 
 - name: Install Awesome version of ultimate vimrc for {{ user }}
   shell: sh ~{{ user }}/.vim_runtime/install_awesome_vimrc.sh 
   become_user: "{{ user }}"
 
-  #- name: Install Awesome verson of ultimate vimrc for root user
-  #shell: sh ~/.vim_runtime/install_awesome_vimrc.sh
-  #become: yes
 

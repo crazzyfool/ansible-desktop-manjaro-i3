@@ -2,4 +2,5 @@
 - name: Oracle Java Development Kit
   yaourt: name="jdk" state="present"
   become: yes
-  become_user: andy
+  become_user: "{{ primary_non_root_user }}"
+

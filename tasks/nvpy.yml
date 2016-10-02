@@ -2,5 +2,5 @@
 - name: Nvpy
   yaourt: name="nvpy-git" state="present"
   become: yes
-  become_user: andy
+  become_user: "{{ primary_non_root_user }}" 
 

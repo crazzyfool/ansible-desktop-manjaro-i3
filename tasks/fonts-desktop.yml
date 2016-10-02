@@ -1,9 +1,4 @@
 ---
-#- name: Set up desktop fonts
-#  pacman: name={{ item }}
-#  with_items:
-#    - ttf-droid
-#    - 
 
 - name: Install recommended Adobe fonts
   yaourt: name={{ item }} state="present"
@@ -12,4 +7,4 @@
     - adobe-source-code-pro-fonts
     - adobe-source-sans-pro-fonts
   become: yes
-  become_user: andy
+  become_user: "{{ primary_non_root_user }}"
