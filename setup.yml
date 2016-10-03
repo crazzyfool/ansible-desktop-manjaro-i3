@@ -19,7 +19,7 @@
 
   tasks:
     # Debug checks
-    - debug: msg="Variable 'primary_non_root_user' is set to {{ primary_non_root_user }}"
+    - debug: msg="primary_non_root_user is set to {{ primary_non_root_user }}"
 
     #######################
     # Basic configuration #
