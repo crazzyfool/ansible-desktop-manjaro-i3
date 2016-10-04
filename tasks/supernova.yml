@@ -1,0 +1,6 @@
+---
+- name: "Install Rackspace supernova"
+  yaourt: name="supernova" state="present"
+  become: yes
+  become_user: "{{ primary_non_root_iuser }}"
+
