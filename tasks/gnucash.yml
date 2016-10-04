@@ -1,0 +1,10 @@
+---
+- name: GNU Cash
+  pacman: name={{ item }} state="present"
+  with_items:
+    - gnucash
+    - perl-date-manip 
+    - perl-finance-quote 
+    - evince 
+    - perl-mozilla-ca
+  become: yes

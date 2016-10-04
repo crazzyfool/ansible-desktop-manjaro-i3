@@ -66,6 +66,7 @@
     # Office
     # ------
     - include: tasks/libreoffice.yml
+    #-include: tasks/gnucash.yml
 
     # Programming
     # -----------
