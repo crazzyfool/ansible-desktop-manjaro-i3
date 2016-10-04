@@ -47,6 +47,9 @@
     # --------
     - include: tasks/google-chrome.yml
     - include: tasks/firefox.yml
+    # telegram-desktop | telegram-desktop-bin
+    #-include: tasks/telegram-desktop.yml
+    #-include: tasks/slack-desktop.yml
 
     # Collaboration
     # -------------
@@ -71,5 +74,5 @@
     # ---------------------
     # https://aur.archlinux.org/packages/supernova/
     #- include: tasks/supernova.yml
-    #
     # 
+

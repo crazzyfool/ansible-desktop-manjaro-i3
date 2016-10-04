@@ -1,0 +1,7 @@
+---
+# https://aur.archlinux.org/packages/telegram-desktop-bin
+- name: "Install Telegram Desktop"
+  yaourt: name="telegram-desktop-bin"
+  become: yes
+  become_user: "{{ primary_non_root_user }}"
+
