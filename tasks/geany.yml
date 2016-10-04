@@ -1,0 +1,4 @@
+---
+- name: "Geany Editor"
+  pacman: name="geany" state="present"
+  become: yes

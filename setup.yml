@@ -69,6 +69,7 @@
     # Programming
     # -----------
     #- include: tasks/netbeans.yml
+    #- include: tasks/geany.yml
     
     # Rackspace Cloud Tools
     # ---------------------
