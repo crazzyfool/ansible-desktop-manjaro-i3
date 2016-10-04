@@ -50,6 +50,7 @@
     # telegram-desktop | telegram-desktop-bin
     #-include: tasks/telegram-desktop.yml
     #-include: tasks/slack-desktop.yml
+    #-include: tasks/transmission.yml
 
     # Collaboration
     # -------------

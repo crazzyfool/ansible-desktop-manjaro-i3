@@ -1,0 +1,4 @@
+---
+- name: "Transmission"
+  pacman: name="transmission-gtk" state="present"
+  become: yes
