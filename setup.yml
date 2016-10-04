@@ -66,3 +66,8 @@
     # Programming
     # -----------
     #- include: tasks/oracle-java.yml
+    
+    # Rackspace Cloud Tools
+    # ---------------------
+    # https://aur.archlinux.org/packages/supernova/
+    #- include: tasks/supernova.yml
