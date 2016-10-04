@@ -1,0 +1,4 @@
+---
+- name: "FreeMind"
+  pacman: name="freemind" state="present"
+  become: yes

@@ -67,6 +67,7 @@
     # ------
     - include: tasks/libreoffice.yml
     #-include: tasks/gnucash.yml
+    #-include: tasks/freemind.yml
 
     # Programming
     # -----------
