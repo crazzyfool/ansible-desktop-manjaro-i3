@@ -1,0 +1,4 @@
+---
+- name: "Work Rave"
+  pacman: name="workrave" state="present"
+  become: yes
