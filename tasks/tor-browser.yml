@@ -1,0 +1,7 @@
+---
+# https://aur.archlinux.org/packages/tor-browser-en/
+- name: "Install Tor browser"
+  yaourt: name="tor-browser-en" state="present"
+  become: yes
+  become_user: "{{ primary_non_root_user }}"
+
