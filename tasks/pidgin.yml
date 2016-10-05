@@ -1,0 +1,13 @@
+---
+- name: "Install Pidgin"
+  pacman: name={{ item }} state="present"
+  with_items:
+    - pidgin
+    - pidgin-sipe
+    - pidgin-toobars
+    - pidgin-xmpp-receipts
+    - telepathy-haze
+    - pidgin-libnotify
+    - pidgin-encryption
+    - aspell-en
+  become: yes
