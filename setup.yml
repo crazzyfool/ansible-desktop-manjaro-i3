@@ -76,10 +76,14 @@
     #- include: tasks/netbeans.yml
     #- include: tasks/geany.yml
     #- include: tasks/mariadb.yml
+    #- include: tasks/mysql-workbench.yml
     
     # Rackspace Cloud Tools
     # ---------------------
     # https://aur.archlinux.org/packages/supernova/
     #- include: tasks/supernova.yml
     # 
+    # Virtualisation
+    # --------------
+    #- include: tasks/qemu.yml
 

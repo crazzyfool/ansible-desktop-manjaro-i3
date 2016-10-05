@@ -1,0 +1,7 @@
+---
+- name: Install Qenu
+  pacman: name={{ item }} state="present"
+  with_items:
+    - qemu
+    - qemu-launcher
+  become: yes

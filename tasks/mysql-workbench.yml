@@ -1,0 +1,5 @@
+---
+- name: "Install MySQL Workbench"
+  pacman: name="mysql-workbench" state="present"
+  become: yes
+
