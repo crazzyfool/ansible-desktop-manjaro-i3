@@ -75,6 +75,7 @@
     # -----------
     #- include: tasks/netbeans.yml
     #- include: tasks/geany.yml
+    #- include: tasks/mariadb.yml
     
     # Rackspace Cloud Tools
     # ---------------------
