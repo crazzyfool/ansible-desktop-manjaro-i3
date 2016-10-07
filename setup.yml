@@ -48,11 +48,12 @@
     - include: tasks/google-chrome.yml
     - include: tasks/firefox.yml
     # telegram-desktop | telegram-desktop-bin
-    #- include: tasks/telegram-desktop.yml
-    #- include: tasks/slack-desktop.yml
-    #- include: tasks/transmission.yml
-    #- include: tasks/pidgin.yml
-    #- include: tasks/filezilla.yml
+    - include: tasks/telegram-desktop.yml
+    - include: tasks/slack-desktop.yml
+    - include: tasks/transmission.yml
+    - include: tasks/pidgin.yml
+    - include: tasks/filezilla.yml
+    # Broken in the AUR (PGP sig errors)
     #- include: tasks/tor-browser.yml
 
     # Collaboration
@@ -69,23 +70,23 @@
     # Office
     # ------
     - include: tasks/libreoffice.yml
-    #-include: tasks/gnucash.yml
-    #-include: tasks/freemind.yml
-    #-include: tasks/workrave.yml
+    - include: tasks/gnucash.yml
+    - include: tasks/freemind.yml
+    - include: tasks/workrave.yml
 
     # Programming
     # -----------
-    #- include: tasks/netbeans.yml
-    #- include: tasks/geany.yml
-    #- include: tasks/mariadb.yml
-    #- include: tasks/mysql-workbench.yml
+    - include: tasks/netbeans.yml
+    - include: tasks/geany.yml
+    - include: tasks/mariadb.yml
+    - include: tasks/mysql-workbench.yml
     
     # Rackspace Cloud Tools
     # ---------------------
     # https://aur.archlinux.org/packages/supernova/
-    #- include: tasks/supernova.yml
+    - include: tasks/supernova.yml
     # 
     # Virtualisation
     # --------------
-    #- include: tasks/qemu.yml
+    - include: tasks/qemu.yml
 

@@ -1,5 +1,5 @@
 ---
-- name: Install Qenu
+- name: Install Qemu
   pacman: name={{ item }} state="present"
   with_items:
     - qemu
