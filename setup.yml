@@ -55,6 +55,7 @@
     - include: tasks/filezilla.yml
     # Broken in the AUR (PGP sig errors)
     #- include: tasks/tor-browser.yml
+    - include: tasks/qtox.yml
 
     # Collaboration
     # -------------
