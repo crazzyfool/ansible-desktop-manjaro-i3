@@ -13,7 +13,7 @@ Manjaro is based on Arch Linux and comes pre-installed with the yaort package ma
 
 ## Usage
 
-  git clone https://github.com/crazzyfool/ansible-desktop-manjaro-i3.git
-  cd ansible-desktop-manjaro-i3/
-  ansible-playbook setup.yml --sudo --ask-sudo-pass
+  git clone https://github.com/crazzyfool/ansible-desktop-manjaro-i3.git</br>
+  cd ansible-desktop-manjaro-i3/</br>
+  ansible-playbook setup.yml --sudo --ask-sudo-pass</br>
 
