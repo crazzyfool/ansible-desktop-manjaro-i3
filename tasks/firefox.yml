@@ -4,5 +4,5 @@
   with_items:
     - firefox
     - firefox-i18n-en-gb
-    #- arch-firefox-search
   become: yes
+
